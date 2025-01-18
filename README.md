@@ -5,7 +5,7 @@
 - Purpose of the assignment: to utilize Apache Hive for data analysis and to derive insights from telecom customer data.
 
 #### 2. Data Loading
-- **Task**: Download and load the dataset into a Hive table.
+- **Task**: Generate/Download and load the dataset into a Hive table.
 - **Steps**:
   - Description of the data schema.
   - Commands used to create the Hive table and load the data.
