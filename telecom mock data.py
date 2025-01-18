@@ -45,6 +45,6 @@ data = {
 df = pd.DataFrame(data)
 
 # Save DataFrame to CSV
-df.to_csv('mock_customer_data.csv', index=False)
+df.to_csv('mock_telecom_customer_data.csv', index=False)
 
 print("Mock data generated and saved to 'mock_telecom_customer_data.csv'.")
