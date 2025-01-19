@@ -125,6 +125,12 @@ select Contract, count(*) from telecom_churn_data_partitioned where Churn = 'Yes
 select Contract, avg(MonthlyCharges) from telecom_churn_data_partitioned group by Contract;
 
 
--- 
+-- d.	Determine the maximum tenure in each Contract type partition.
+
+select Contract, max(tenure) from telecom_churn_data_partitioned group by Contract;
+
+
+--
+
 
 
