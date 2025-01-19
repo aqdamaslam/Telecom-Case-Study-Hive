@@ -204,7 +204,15 @@ join custome_demographic_data d on t.customerID = d.customerID;
 
 
 -- 2. Map Join
-SET hive.auto.convert.join=true;
+set hive.auto.convert.join=true;
+
+select cc.*, d.* from telecom_churn_data cc
+join custome_demographic_data d
+on cc.customerID = d.customerID;
+
+
+-- 3. Bucket Map Join
+set hive.optimize.bucketmapjoin=true;
 
 select cc.*, d.* from telecom_churn_data cc
 join custome_demographic_data d
@@ -212,4 +220,3 @@ on cc.customerID = d.customerID;
 
 
 -- 
-
