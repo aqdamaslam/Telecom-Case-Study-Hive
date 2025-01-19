@@ -315,5 +315,11 @@ select InternetService, count(*)*100.0/(select count(*) from telecom_churn_data 
 from telecom_churn_data where Churn = 'Yes' group by InternetService;
 
 
+-- c.	Find the number of customers who have no dependents and have churned, grouped by Contract type.
+
+select Contract, count(*) from telecom_churn_data where Churn = 'Yes' and Dependents = 'No' group by Contract;
+
+
 -- 
+
 
