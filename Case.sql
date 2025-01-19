@@ -59,3 +59,25 @@ select count(TotalCharges) from telecom_churn_data where churn = 'Yes';
 
 select Contract, count(*) from telecom_churn_data where Churn = 'Yes' group by Contract;
 
+
+-- b.	Write a HiveQL query to find the average MonthlyCharges for customers who have churned vs those who have not.
+
+select Churn, avg(MonthlyCharges) from telecom_churn_data group by Churn;
+
+
+-- c.	Determine the maximum, minimum, and average tenure of the customers.
+
+select max(tenure) as Max_tenure, min(tenure) as Min_Tenure, avg(tenure) as Avg_Tenure from telecom_churn_data;
+
+-- d.	Find out which PaymentMethod is most popular among customers.
+ 
+select PaymentMethod, count(*) from telecom_churn_data
+group by PaymentMethod
+order by count(*) desc limit 1;
+
+
+-- 
+
+
+
+
