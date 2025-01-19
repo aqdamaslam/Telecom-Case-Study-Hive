@@ -39,3 +39,9 @@ select * from telecom_churn_data limit 10;
 select count(*) from telecom_churn_data;
 
 
+-- b.	Write a HiveQL query to find the number of customers who have churned.
+
+select count(*) from telecom_churn_data where churn = 'Yes';
+
+
+
