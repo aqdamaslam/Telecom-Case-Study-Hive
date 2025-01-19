@@ -158,4 +158,9 @@ create table if not exists telecom_churn_data_bucketed (
 clustered by (tenure) into 6 buckets;
 
 
+-- b.	Load the data from the original table into the bucketed table.
+
+insert overwrite table telecom_churn_data_bucketed select * from telecom_churn_data;
+
+
 -- 
