@@ -309,4 +309,11 @@ You can adjust the table to include additional metrics or details based on what 
 select PaymentMethod, count(*) from telecom_churn_data where Churn = 'Yes' group by PaymentMethod;
 
 
+-- b.	Calculate the churn rate (percentage of customers who left) for each InternetService category.
+
+select InternetService, count(*)*100.0/(select count(*) from telecom_churn_data where Churn = 'Yes') as churn_rate
+from telecom_churn_data where Churn = 'Yes' group by InternetService;
+
+
 -- 
+
