@@ -199,8 +199,17 @@ load data inpath 'path/to/Customer_Demographic_data.csv' into table custome_demo
 --  b.	Write HiveQL queries to join the customer churn table and the demographics table on customerID using different types of joins - common join, map join, bucket map join, and sorted merge bucket join.
 
 -- 1. Common Join (Regular Join)
-SELECT cc.*, d.* from telecom_churn_data t
+select cc.*, d.* from telecom_churn_data t
 join custome_demographic_data d on t.customerID = d.customerID;
 
 
+-- 2. Map Join
+SET hive.auto.convert.join=true;
+
+select cc.*, d.* from telecom_churn_data cc
+join custome_demographic_data d
+on cc.customerID = d.customerID;
+
+
+-- 
 
