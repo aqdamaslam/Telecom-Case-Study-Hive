@@ -81,6 +81,38 @@ order by count(*) desc limit 1;
 select PaperlessBilling, count(*) from telecom_churn_data where Churn = 'Yes' group by PaperlessBilling;
 
 
+-- 4.	Partitioning (Intermediate)
+-- a.	Create a partitioned table by Contract and load the data from the original table.
+
+create telecom_churn_data_partitioned (
+  customerID string,
+  gender string,
+  SeniorCitizen int,
+  Partner string,
+  Dependents string,
+  tenure int,
+  PhoneService string,
+  MultipleLines string,
+  InternetService string,
+  OnlineSecurity string,
+  OnlineBackup string,
+  DeviceProtection string,
+  TechSupport string,
+  StreamingTV string,
+  StreamingMovies string,
+  PaperlessBilling string,
+  PaymentMethod string,
+  MonthlyCharges double,
+  TotalCharges double,
+  Churn string
+)
+
+partitioned by (Contract STRING);
+
+-- Loading Data from original table
+
+insert overwrite telecom_churn_data_partitioned partition(Contract)
+select * from telecom_churn_data;
 
 
 
