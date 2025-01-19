@@ -54,4 +54,8 @@ select gender, SeniorCitizen, count(*) from telecom_churn_data group by gender, 
 select count(TotalCharges) from telecom_churn_data where churn = 'Yes';
 
 
--- 
+-- 3.	Data Analysis (Intermediate)
+-- a.	Write a HiveQL query to find the number of customers who have churned, grouped by their Contract type.
+
+select Contract, count(*) from telecom_churn_data where Churn = 'Yes' group by Contract;
+
