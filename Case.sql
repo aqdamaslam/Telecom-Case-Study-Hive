@@ -178,6 +178,26 @@ select 'Bucket 5' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_d
 select 'Bucket 6' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 51 and 60;
 
 
--- 
+-- 6.	Performance Optimization with Joins (Advanced)
+-- Select another dataset, Customer_Demographic_data.csv, that contains the details of the demographic data of each customer.
+
+a.	Load the demographics dataset into another Hive table.
+
+create table if not exists custome_demographic_data (
+  Customer_ID int,
+  City string,
+  Latitude doube,
+  Longitude double,
+  Country String,
+  ISO2 string,
+  State string
+);
+
+load data inpath 'path/to/Customer_Demographic_data.csv' into table custome_demographic_data;
+
+
+--
+
+
 
 
