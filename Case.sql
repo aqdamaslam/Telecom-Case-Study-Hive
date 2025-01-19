@@ -49,4 +49,9 @@ select count(*) from telecom_churn_data where churn = 'Yes';
 select gender, SeniorCitizen, count(*) from telecom_churn_data group by gender, SeniorCitizen;
 
 
+-- d.	Determine the total charge to the company due to churned customers.
 
+select count(TotalCharges) from telecom_churn_data where churn = 'Yes';
+
+
+-- 
