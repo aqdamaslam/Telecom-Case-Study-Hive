@@ -326,4 +326,9 @@ select tenure, count(*)*100.0/(select count(*) from telecom_churn_data where Chu
 where Churn = 'Yes' group by tenure order by churn_rate desc limit 5;
 
 
+-- e.	Calculate the average MonthlyCharges for customers who have PhoneService and have churned, grouped by Contract type.
+
+select avg(MonthlyCharges) from telecom_churn_data where PhoneService = 'Yes' and Churn = 'Yes';
+
+
 -- 
