@@ -333,8 +333,17 @@ select avg(MonthlyCharges) from telecom_churn_data where PhoneService = 'Yes' an
 
 -- f.	Identify which InternetService type is most associated with churned customers.
 
-select InternetService, count(*) from telecom_data where Churn = 'Yes' group by InternetService order by COUNT(*) desc limit 1;
+select InternetService, count(*) from telecom_churn_data where Churn = 'Yes' group by InternetService order by COUNT(*) desc limit 1;
+
+
+-- g.	Determine if customers with a partner have a lower churn rate compared to those without.
+
+select Partner, count(*)*100.0/(select count(*) from telecom_churn_data where Partner = 'Yes') as churn_rate_with_partner
+from telecom_churn_data where Churn = 'Yes' and Partner = 'Yes' union all
+select Partner, count(*)*100.0/(select count(*) from telecom_churn_data where Partner = 'No') as churn_rate_without_partner
+from telecom_churn_data where Churn = 'Yes' and Partner = 'No';
 
 
 -- 
+
 
