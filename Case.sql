@@ -228,4 +228,85 @@ join custome_demographic_data d
 on cc.customerID = d.customerID;
 
 
+/*
+To observe and document the performance of each join type in Hive, you can follow these steps:
+
+### Steps to Observe Performance:
+
+1. **Enable Logging and Metrics**:
+   - Enable detailed logging and capture the performance metrics.
+   ```sql
+   SET hive.exec.dynamic.partition.mode=nonstrict;
+   SET hive.execution.engine=tez;
+   SET hive.cbo.enable=true;
+   SET hive.compute.query.using.stats=true;
+   SET hive.stats.fetch.column.stats=true;
+   SET hive.stats.fetch.partition.stats=true;
+   ```
+
+2. **Run the Queries**:
+   - Execute each join query individually.
+   - Use `EXPLAIN` before running the query to get the query execution plan.
+   ```sql
+   explain select cc.*, d.* from telecom_churn_data t join custome_demographic_data d on t.customerID = d.customerID;
+   ```
+   ```sql
+   explain select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+   ```sql
+   explain select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+   ```sql
+   explain select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+
+3. **Capture Execution Time**:
+   - Note the total execution time for each query using `TIME` command.
+   ```sql
+   time select cc.*, d.* from telecom_churn_data t join custome_demographic_data d on t.customerID = d.customerID;
+   ```
+   ```sql
+   time select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+   ```sql
+   time select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+   ```sql
+   time select cc.*, d.* from telecom_churn_data cc join custome_demographic_data d on cc.customerID = d.customerID;
+   ```
+
+4. **Monitor Resource Usage**:
+   - Check the resource usage (CPU, memory, disk I/O) for each query execution through the Hadoop/YARN Resource Manager or Hive logs.
+
+5. **Gather Query Metrics**:
+   - After each query execution, capture metrics like number of map and reduce tasks, data shuffled, and any other relevant statistics.
+
+6. **Document Results**:
+   - Create a table or document to log the results for each join type.
+
+### Sample Documentation Table:
+
+| Join Type             | Execution Time | Map Tasks | Reduce Tasks | Data Shuffled | CPU Usage | Memory Usage | Observations                     |
+|-----------------------|----------------|-----------|--------------|---------------|-----------|--------------|----------------------------------|
+| Common Join           | 5 mins         | 20        | 10           | 500 MB        | 70%       | 4 GB         | Suitable for large datasets.     |
+| Map Join              | 2 mins         | 10        | 0            | 100 MB        | 50%       | 2 GB         | Fast for small right-side table. |
+| Bucket Map Join       | 3 mins         | 15        | 5            | 300 MB        | 60%       | 3 GB         | Effective for bucketed tables.   |
+| Sorted Merge Bucket Join | 2.5 mins    | 10        | 3            | 200 MB        | 55%       | 2.5 GB       | Best for sorted, bucketed tables.|
+
+### Conclusion:
+- **Common Join**: Best for general cases but may have high resource usage for large datasets.
+- **Map Join**: Optimized for scenarios where one table is small enough to fit into memory.
+- **Bucket Map Join**: Useful when both tables are bucketed, reducing the data shuffled.
+- **Sorted Merge Bucket Join**: Most efficient when tables are both bucketed and sorted, minimizing the data shuffled.
+
+You can adjust the table to include additional metrics or details based on what is most relevant to your analysis.
+*/
+
+
+-- 7.	Advanced Analysis (Expert)
+-- a.	Find the distribution of PaymentMethod among churned customers.
+
+select PaymentMethod, count(*) from telecom_churn_data where Churn = 'Yes' group by PaymentMethod;
+
+
 -- 
