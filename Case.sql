@@ -120,5 +120,11 @@ select * from telecom_churn_data;
 select Contract, count(*) from telecom_churn_data_partitioned where Churn = 'Yes' group by Contract;
 
 
---
+-- c.	Find the average MonthlyCharges for each type of Contract using the partitioned table.
+
+select Contract, avg(MonthlyCharges) from telecom_churn_data_partitioned group by Contract;
+
+
+-- 
+
 
