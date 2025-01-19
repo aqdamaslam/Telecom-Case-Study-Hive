@@ -184,7 +184,7 @@ select 'Bucket 6' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_d
 a.	Load the demographics dataset into another Hive table.
 
 create table if not exists custome_demographic_data (
-  Customer_ID int,
+  CustomerID int,
   City string,
   Latitude doube,
   Longitude double,
@@ -196,8 +196,11 @@ create table if not exists custome_demographic_data (
 load data inpath 'path/to/Customer_Demographic_data.csv' into table custome_demographic_data;
 
 
---
+--  b.	Write HiveQL queries to join the customer churn table and the demographics table on customerID using different types of joins - common join, map join, bucket map join, and sorted merge bucket join.
 
+-- 1. Common Join (Regular Join)
+SELECT cc.*, d.* from telecom_churn_data t
+join custome_demographic_data d on t.customerID = d.customerID;
 
 
 
