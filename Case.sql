@@ -44,4 +44,9 @@ select count(*) from telecom_churn_data;
 select count(*) from telecom_churn_data where churn = 'Yes';
 
 
+-- c.	Analyze the distribution of customers based on gender and SeniorCitizen status.
+
+select gender, SeniorCitizen, count(*) from telecom_churn_data group by gender, SeniorCitizen;
+
+
 
