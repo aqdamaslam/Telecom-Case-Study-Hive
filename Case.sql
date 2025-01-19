@@ -168,5 +168,16 @@ insert overwrite table telecom_churn_data_bucketed select * from telecom_churn_d
 select avg(MonthlyCharges) from telecom_churn_data_bucketed where tenure between lower_range and upper_range;
 
 
+-- d.	Find the highest TotalCharges in each tenure bucket.
+
+select 'Bucket 1' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 1 and 10 union all
+select 'Bucket 2' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 11 and 20 union all
+select 'Bucket 3' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 21 and 30 union all
+select 'Bucket 4' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 31 and 40 union all
+select 'Bucket 5' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 41 and 50 union all
+select 'Bucket 6' as Bucket, max(TotalCharges) as MaxCharge from telecom_churn_data_bucketed where tenure between 51 and 60;
+
+
 -- 
+
 
