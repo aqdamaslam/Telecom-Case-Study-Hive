@@ -33,5 +33,9 @@ stored as textfile;
 
 select * from telecom_churn_data limit 10;
 
+-- 2.	Data Exploration (Beginner)
+-- a.	Write a HiveQL query to find the total number of customers in the dataset.
+
+select count(*) from telecom_churn_data;
 
 
