@@ -219,4 +219,13 @@ join custome_demographic_data d
 on cc.customerID = d.customerID;
 
 
+-- 4. Sorted Merge Bucket Join
+set hive.optimize.bucketmapjoin=true;
+set hive.optimize.bucketmapjoin.sortedmerge=true;
+
+select cc.*, d.* from telecom_churn_data cc
+join custome_demographic_data d
+on cc.customerID = d.customerID;
+
+
 -- 
