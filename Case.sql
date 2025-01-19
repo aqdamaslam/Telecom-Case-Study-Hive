@@ -331,4 +331,10 @@ where Churn = 'Yes' group by tenure order by churn_rate desc limit 5;
 select avg(MonthlyCharges) from telecom_churn_data where PhoneService = 'Yes' and Churn = 'Yes';
 
 
+-- f.	Identify which InternetService type is most associated with churned customers.
+
+select InternetService, count(*) from telecom_data where Churn = 'Yes' group by InternetService order by COUNT(*) desc limit 1;
+
+
 -- 
+
