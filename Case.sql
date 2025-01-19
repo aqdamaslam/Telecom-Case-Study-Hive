@@ -163,4 +163,10 @@ clustered by (tenure) into 6 buckets;
 insert overwrite table telecom_churn_data_bucketed select * from telecom_churn_data;
 
 
+-- c.	Write a HiveQL query to find the average MonthlyCharges for customers in each bucket.
+
+select avg(MonthlyCharges) from telecom_churn_data_bucketed where tenure between lower_range and upper_range;
+
+
 -- 
+
