@@ -76,7 +76,10 @@ group by PaymentMethod
 order by count(*) desc limit 1;
 
 
--- 
+-- e.	Analyze the relationship between PaperlessBilling and churn rate.
+
+select PaperlessBilling, count(*) from telecom_churn_data where Churn = 'Yes' group by PaperlessBilling;
+
 
 
 
