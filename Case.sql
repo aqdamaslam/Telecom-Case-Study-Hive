@@ -115,4 +115,10 @@ insert overwrite telecom_churn_data_partitioned partition(Contract)
 select * from telecom_churn_data;
 
 
+-- b.	Write a HiveQL query to find the number of customers who have churned in each Contract type using the partitioned table.
+
+select Contract, count(*) from telecom_churn_data_partitioned where Churn = 'Yes' group by Contract;
+
+
+--
 
