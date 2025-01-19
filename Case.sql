@@ -130,7 +130,32 @@ select Contract, avg(MonthlyCharges) from telecom_churn_data_partitioned group b
 select Contract, max(tenure) from telecom_churn_data_partitioned group by Contract;
 
 
---
+-- 5.	Bucketing (Advanced)
+-- a.	Create a bucketed table by tenure into 6 buckets.
+
+create table if not exists telecom_churn_data_bucketed ( 
+  customerID string,
+  gender string,
+  SeniorCitizen int,
+  Partner string,
+  Dependents string,
+  PhoneService string,
+  MultipleLines string,
+  InternetService string,
+  OnlineSecurity string,
+  OnlineBackup string,
+  DeviceProtection string,
+  TechSupport string,
+  StreamingTV string,
+  StreamingMovies string,
+  Contract string,
+  PaperlessBilling string,
+  PaymentMethod string,
+  MonthlyCharges double,
+  TotalCharges double,
+  Churn string
+)
+clustered by (tenure) into 6 buckets;
 
 
-
+-- 
