@@ -320,6 +320,10 @@ from telecom_churn_data where Churn = 'Yes' group by InternetService;
 select Contract, count(*) from telecom_churn_data where Churn = 'Yes' and Dependents = 'No' group by Contract;
 
 
+-- d.	Find the top 5 tenure lengths that have the highest churn rates.
+
+select tenure, count(*)*100.0/(select count(*) from telecom_churn_data where Churn = 'Yes') as churn_rate from telecom_churn_data
+where Churn = 'Yes' group by tenure order by churn_rate desc limit 5;
+
+
 -- 
-
-
