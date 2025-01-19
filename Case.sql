@@ -29,4 +29,9 @@ fields terminated by ','
 stored as textfile;
 
 
+-- b.	Write a query to display the top 10 rows of the table.
+
+select * from telecom_churn_data limit 10;
+
+
 
