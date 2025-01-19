@@ -344,6 +344,14 @@ select Partner, count(*)*100.0/(select count(*) from telecom_churn_data where Pa
 from telecom_churn_data where Churn = 'Yes' and Partner = 'No';
 
 
--- 
+-- h.	Analyze the relationship between MultipleLines and churn rate.
+
+select MultipleLines, count(*)*100.0/(select count(*) from telecom_churn_data where MultipleLines = 'Yes') as churn_rate_with_multiplelines
+from telecom_churn_data
+where Churn = 'Yes' and MultipleLines = 'Yes' union all
+select MultipleLines, count(*)*100.0/(select count(*) from telecom_churn_data where MultipleLines = 'No') as churn_rate_without_multiplelines
+from telecom_churn_data
+where Churn = 'Yes' and MultipleLines = 'No';
+
 
 
