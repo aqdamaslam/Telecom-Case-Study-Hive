@@ -18,7 +18,7 @@
   - Number of churned customers.
   - Distribution analysis by gender and SeniorCitizen status.
   - Total charge to the company from churned customers.
-- **Findings**: Summary of the key insights from the exploration phase.
+- **Findings**: Summary of the key insights from the exploration phase. 
 
 #### 4. Data Analysis
 - **Objective**: Conduct intermediate-level analysis to gain deeper insights.
